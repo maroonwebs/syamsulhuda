@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Keuangan & Transparansi - Masjid Syamsul Huda</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLE WARNA --- */
+        :root {
+            --primary-green: #2E5A43;
+            --secondary-gold: #C5A059;
+            --light-bg: #F8F9FA;
+            --dark-text: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-text);
+            overflow-x: hidden;
+            background-color: #f4f6f8; /* Background sedikit abu-abu untuk kontras mading */
+        }
+
+        h1, h2, h3, h4, h5, .navbar-brand, .display-6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- NAVBAR (UPDATED WITH DROPDOWN) --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-green) !important;
+            font-size: 1.35rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #555 !important;
+            margin: 0 8px;
+            font-size: 0.95rem;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-green) !important;
+        }
+        
+        /* Dropdown Styling */
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        .dropdown-item {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .dropdown-item:hover {
+            background-color: #f0f7f4;
+            color: var(--primary-green);
+        }
+        .dropdown-item.active {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .btn-donate {
+            background-color: var(--primary-green);
+            color: white;
+            border-radius: 6px;
+            padding: 8px 24px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .btn-donate:hover {
+            background-color: #1e3d2d;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- PAGE HEADER BANNER --- */
+        .page-header {
+            background: linear-gradient(rgba(46, 90, 67, 0.9), rgba(46, 90, 67, 0.8)), 
+                        url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding-top: 80px;
+        }
+        .breadcrumb-custom .breadcrumb-item a { color: #ddd; text-decoration: none; }
+        .breadcrumb-custom .breadcrumb-item.active { color: var(--secondary-gold); }
+
+        /* --- MADING STYLE SECTION --- */
+        .mading-section {
+            padding: 60px 0 80px 0;
+        }
+        
+        /* Kartu Laporan (Paper Style) */
+        .report-card {
+            background-color: white;
+            border-radius: 12px;
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: var(--dark-text);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .report-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(46, 90, 67, 0.15);
+            border-color: var(--primary-green);
+        }
+
+        /* Bagian Atas (Thumbnail Dokumen) */
+        .report-thumb {
+            background-color: #f8f9fa;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .report-thumb i {
+            font-size: 4rem;
+            color: #d1d5db;
+            transition: 0.3s;
+        }
+        
+        .report-card:hover .report-thumb i {
+            color: var(--primary-green);
+            transform: scale(1.1);
+        }
+
+        /* Label "PDF" di pojok */
+        .file-type-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #dc3545;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        /* Bagian Bawah (Info) */
+        .report-body {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .report-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .report-date {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .btn-view-drive {
+            font-size: 0.85rem;
+            color: var(--primary-green);
+            font-weight: 600;
+            border: 1px solid var(--primary-green);
+            padding: 6px 15px;
+            border-radius: 50px;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        
+        .report-card:hover .btn-view-drive {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        /* --- DONATION SECTION --- */
+        .donation-section {
+            background: linear-gradient(rgba(46, 90, 67, 0.9), rgba(46, 90, 67, 0.95)), 
+                        url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            padding: 80px 0;
+        }
+        .donation-combined-card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        .donation-bank-side {
+            padding: 50px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .donation-qr-side {
+            background-color: #f4f6f5;
+            padding: 50px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-left: 1px dashed #cbd5e0;
+        }
+        .qr-image {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 15px;
+        }
+
+        /* --- FOOTER --- */
+        footer { background-color: #152920; color: #e0e0e0; padding-top: 70px; }
+        footer h5 { color: white; margin-bottom: 20px; font-size: 1.2rem; }
+        footer a { color: #aaa; text-decoration: none; transition: 0.3s; }
+        footer a:hover { color: var(--secondary-gold); }
+        .copyright { background-color: #0d1b15; padding: 25px 0; margin-top: 50px; font-size: 0.9rem; }
+        .footer-map { width: 100%; height: 200px; border: 0; border-radius: 8px; opacity: 0.8; transition: 0.3s; }
+        .footer-map:hover { opacity: 1; }
+
+        /* --- FLOATING BUTTONS --- */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        .btn-float {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 26px;
+            border: none;
+            outline: none;
+        }
+        .btn-float:hover {
+            transform: translateY(-5px);
+            color: white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+        .wa-float { background-color: #25D366; }
+        .wa-float:hover { background-color: #20b957; }
+        .top-float {
+            background-color: var(--primary-green);
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        .top-float.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .top-float:hover {
+            background-color: #1e3d2d;
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .donation-bank-side { padding: 30px; text-align: center; }
+            .donation-bank-side .d-flex { justify-content: center; }
+            .donation-qr-side { padding: 30px; border-left: none; border-top: 2px dashed #cbd5e0; }
+            .floating-container { bottom: 20px; right: 20px; }
+            .btn-float { width: 50px; height: 50px; font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-mosque me-2 text-success"></i> Masjid Syamsul Huda
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center text-center mt-3 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profil-masjid.html">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="program.html">Program</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pendidikan.html">Pendidikan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dkm.html">DKM</a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Event
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="event.html">Semua Agenda</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="promo.html">Maulid Nabi</a></li>
+                            <li><a class="dropdown-item" href="#">Ramadhan 1447H</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Berita</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="#donasi" class="btn btn-donate w-100 w-lg-auto"><i class="fas fa-heart me-2"></i>Donasi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Laporan Keuangan</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-custom justify-content-center">
+                    <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Keuangan</li>
+                </ol>
+            </nav>
+        </div>
+    </header>
+
+    <section class="mading-section">
+        <div class="container">
+            
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-success">Transparansi Dana Umat</h2>
+                <p class="text-muted">Klik pada kartu laporan untuk melihat detail dokumen di Google Drive.</p>
+                <div style="width: 60px; height: 3px; background: var(--secondary-gold); margin: 0 auto;"></div>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="https://drive.google.com/file/d/1StbqW_xgw2JvxIbSVxH2_shC6Jd-q0_9/view?usp=sharing" target="_blank" class="report-card">
+                        <div class="file-type-badge">PDF</div>
+                        <div class="report-thumb">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="report-body">
+                            <h5 class="report-title">Laporan Desember 2025</h5>
+                            <span class="report-date">Update: 30 Des 2025</span>
+                            <div class="btn-view-drive"><i class="fab fa-google-drive me-2"></i>Buka File</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="https://drive.google.com/file/d/1StbqW_xgw2JvxIbSVxH2_shC6Jd-q0_9/view?usp=sharing" target="_blank" class="report-card">
+                        <div class="file-type-badge">PDF</div>
+                        <div class="report-thumb">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="report-body">
+                            <h5 class="report-title">Laporan November 2025</h5>
+                            <span class="report-date">Update: 01 Des 2025</span>
+                            <div class="btn-view-drive"><i class="fab fa-google-drive me-2"></i>Buka File</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="https://drive.google.com/file/d/1StbqW_xgw2JvxIbSVxH2_shC6Jd-q0_9/view?usp=sharing" target="_blank" class="report-card">
+                        <div class="file-type-badge">PDF</div>
+                        <div class="report-thumb">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="report-body">
+                            <h5 class="report-title">Laporan Oktober 2025</h5>
+                            <span class="report-date">Update: 02 Nov 2025</span>
+                            <div class="btn-view-drive"><i class="fab fa-google-drive me-2"></i>Buka File</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="https://drive.google.com/file/d/1StbqW_xgw2JvxIbSVxH2_shC6Jd-q0_9/view?usp=sharing" target="_blank" class="report-card">
+                        <div class="file-type-badge">PDF</div>
+                        <div class="report-thumb">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="report-body">
+                            <h5 class="report-title">Laporan September 2025</h5>
+                            <span class="report-date">Update: 01 Okt 2025</span>
+                            <div class="btn-view-drive"><i class="fab fa-google-drive me-2"></i>Buka File</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="https://drive.google.com/file/d/1StbqW_xgw2JvxIbSVxH2_shC6Jd-q0_9/view?usp=sharing" target="_blank" class="report-card">
+                        <div class="file-type-badge" style="background-color: #ffc107; color: #333;">XLSX</div>
+                        <div class="report-thumb">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <div class="report-body">
+                            <h5 class="report-title">LPJ Renovasi Kubah</h5>
+                            <span class="report-date">Proyek 2025</span>
+                            <div class="btn-view-drive"><i class="fab fa-google-drive me-2"></i>Buka File</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="https://drive.google.com/file/d/1StbqW_xgw2JvxIbSVxH2_shC6Jd-q0_9/view?usp=sharing" target="_blank" class="report-card">
+                        <div class="file-type-badge">PDF</div>
+                        <div class="report-thumb">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="report-body">
+                            <h5 class="report-title">Laporan Santunan Yatim</h5>
+                            <span class="report-date">Semester 1 - 2025</span>
+                            <div class="btn-view-drive"><i class="fab fa-google-drive me-2"></i>Buka File</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="https://drive.google.com/file/d/1StbqW_xgw2JvxIbSVxH2_shC6Jd-q0_9/view?usp=sharing" target="_blank" class="report-card">
+                        <div class="file-type-badge">PDF</div>
+                        <div class="report-thumb">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="report-body">
+                            <h5 class="report-title">Laporan Agustus 2025</h5>
+                            <span class="report-date">Update: 02 Sep 2025</span>
+                            <div class="btn-view-drive"><i class="fab fa-google-drive me-2"></i>Buka File</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="https://drive.google.com/file/d/1StbqW_xgw2JvxIbSVxH2_shC6Jd-q0_9/view?usp=sharing" target="_blank" class="report-card">
+                        <div class="file-type-badge">PDF</div>
+                        <div class="report-thumb">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="report-body">
+                            <h5 class="report-title">Laporan Juli 2025</h5>
+                            <span class="report-date">Update: 01 Agu 2025</span>
+                            <div class="btn-view-drive"><i class="fab fa-google-drive me-2"></i>Buka File</div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-secondary rounded-pill px-4">Lihat Arsip Tahun Sebelumnya <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="donasi" class="donation-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="donation-combined-card d-flex flex-column flex-md-row">
+                        
+                        <div class="col-md-7 donation-bank-side">
+                            <h2 class="fw-bold mb-3 font-playfair display-6">Infaq & Shodaqoh</h2>
+                            <p class="text-muted mb-4">"Perumpamaan orang yang menginfakkan hartanya di jalan Allah seperti sebutir biji yang menumbuhkan tujuh tangkai..." <br><small>(QS. Al-Baqarah: 261)</small></p>
+                            
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="bg-light rounded-circle p-3 me-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-university fa-2x text-warning"></i>
+                                </div>
+                                <div>
+                                    <h5 class="m-0 fw-bold">Bank Syariah Indonesia (BSI)</h5>
+                                    <p class="m-0 text-muted small">Kode Bank: 451</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-light p-3 rounded-3 mb-4 d-inline-block">
+                                <h3 class="fw-bold text-success m-0 display-6" style="letter-spacing: 1px;">1234-5678-9000</h3>
+                                <p class="text-muted m-0 small">a.n Masjid Syamsul Huda Malang</p>
+                            </div>
+
+                            <div>
+                                <a href="https://wa.me/62895639068080?text=Assalamu%27alaikum%2C%20saya%20sudah%20transfer%20donasi" target="_blank" class="btn btn-warning rounded-pill px-4 py-2 fw-bold text-dark shadow-sm">
+                                    <i class="fab fa-whatsapp me-2"></i>Konfirmasi Transfer
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 donation-qr-side">
+                            <div class="mb-2">
+                                <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill fw-bold">SCAN ME</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-3">QRIS Donasi</h5>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" alt="QRIS Masjid Syamsul Huda" class="qr-image">
+                            <p class="fw-bold mb-0 text-dark">Masjid Syamsul Huda</p>
+                            <p class="small text-muted mb-3">NMID: ID10200300400</p>
+                            
+                            <div class="d-flex justify-content-center gap-2 flex-wrap text-muted small opacity-75">
+                                <span><i class="fas fa-wallet me-1"></i>GoPay</span>
+                                <span><i class="fas fa-money-bill-wave me-1"></i>OVO</span>
+                                <span><i class="fas fa-mobile-alt me-1"></i>Dana</span>
+                                <span><i class="fas fa-university me-1"></i>M-Banking</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold text-white"><i class="fas fa-mosque me-2"></i> Masjid Syamsul Huda</h5>
+                    <p class="mt-3 text-white-50 small">
+                        Jl. Simpang Candi Panggung No. 23<br>
+                        Mojolangu, Lowokwaru, Kota Malang, Jawa Timur<br>
+                        Kode Pos 65141
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="fs-5"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4 col-6">
+                    <h5>Navigasi</h5>
+                    <ul class="list-unstyled mt-3 small">
+                        <li class="mb-2"><a href="index.html">Beranda</a></li>
+                        <li class="mb-2"><a href="profil-masjid.html">Profil Masjid</a></li>
+                        <li class="mb-2"><a href="galeri.html">Galeri</a></li>
+                        <li class="mb-2"><a href="laporan.html">Laporan Keuangan</a></li>
+                        <li class="mb-2"><a href="blog">Artikel & Berita</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4 col-6">
+                    <h5>Layanan</h5>
+                    <ul class="list-unstyled mt-3 small">
+                        <li class="mb-2"><a href="#">Konsultasi Syariah</a></li>
+                        <li class="mb-2"><a href="program.html">Program DKM</a></li>
+                        <li class="mb-2"><a href="pendidikan.html">Pendidikan</a></li>
+                        <li class="mb-2"><a href="event.html">Event PHBI</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Lokasi Kami</h5>
+                    <div class="mt-3">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1011547.1639865536!2d112.01189142325426!3d-7.962101287934152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78820a2160b241%3A0x1f1cb525869e9a24!2s%22YAYASAN%20MASJID%20SAMSUL%20HUDA%22!5e0!3m2!1sid!2sid!4v1767131227588!5m2!1sid!2sid" 
+                                class="footer-map" allowfullscreen="" loading="lazy"></iframe>
+                        <a href="https://maps.app.goo.gl/7hdpxZ9sThkx45sNA" target="_blank" class="text-white-50 small mt-2 d-block text-decoration-none">
+                            <i class="fas fa-map-marked-alt me-1"></i> Buka di Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center text-white-50">
+            <div class="container">
+                <small>© 2024 Masjid Syamsul Huda Malang. All Rights Reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-container">
+        <button class="btn-float top-float" id="btnBackToTop" title="Kembali ke Atas">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <a href="https://wa.me/62895639068080?text=Assalamu%27alaikum%20Admin%2C%20saya%20ingin%20info%20Keuangan%20Masjid" target="_blank" class="btn-float wa-float" title="Chat Takmir">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Scroll to Top Logic
+        const btnBackToTop = document.getElementById("btnBackToTop");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btnBackToTop.classList.add("show");
+            } else {
+                btnBackToTop.classList.remove("show");
+            }
+        };
+        btnBackToTop.addEventListener("click", function(){
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
+</body>
+</html>

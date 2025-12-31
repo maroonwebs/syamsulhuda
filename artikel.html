@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keutamaan Sholat Berjamaah - Blog Masjid Syamsul Huda</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLE WARNA --- */
+        :root {
+            --primary-green: #2E5A43;
+            --secondary-gold: #C5A059;
+            --light-bg: #F8F9FA;
+            --dark-text: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+
+        h1, h2, h3, h4, h5, .navbar-brand, .article-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- NAVBAR (UPDATED) --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-green) !important;
+            font-size: 1.35rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #555 !important;
+            margin: 0 8px;
+            font-size: 0.95rem;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-green) !important;
+        }
+        
+        /* CSS Tambahan untuk Dropdown Navbar (Sesuai Index) */
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        .dropdown-item {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .dropdown-item:hover {
+            background-color: #f0f7f4;
+            color: var(--primary-green);
+        }
+        .dropdown-item.active {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .btn-donate {
+            background-color: var(--primary-green);
+            color: white;
+            border-radius: 6px;
+            padding: 8px 24px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .btn-donate:hover {
+            background-color: #1e3d2d;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- ARTICLE STYLES (ORIGINAL - TIDAK DIRUBAH) --- */
+        .article-header {
+            padding-top: 120px;
+            padding-bottom: 40px;
+            background-color: #f9fbf9;
+        }
+        .article-meta {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .article-category {
+            background-color: var(--secondary-gold);
+            color: white;
+            padding: 3px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-right: 10px;
+        }
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        .article-wrapper { padding: 40px 0 80px 0; }
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+        .article-content p { margin-bottom: 25px; }
+        .article-content h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            scroll-margin-top: 100px;
+        }
+        .article-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .main-article-img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .toc-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        .toc-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary-green);
+            font-size: 1rem;
+            margin: 0;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: #e2e8e4;
+            color: var(--primary-green);
+            box-shadow: none;
+        }
+        .toc-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+        .toc-list li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            border-left: 3px solid #ddd;
+            transition: 0.3s;
+        }
+        .toc-list li:hover { border-left-color: var(--secondary-gold); }
+        .toc-list a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.95rem;
+            display: block;
+        }
+        .toc-list a:hover { color: var(--primary-green); }
+        blockquote {
+            border-left: 5px solid var(--secondary-gold);
+            background: #fffcf5;
+            padding: 20px 30px;
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: #555;
+            margin: 30px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .read-also-box {
+            background-color: #f0f8ff;
+            border-left: 5px solid #007bff;
+            padding: 15px 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        .read-also-box span { font-weight: 700; color: #333; margin-right: 5px; }
+        .read-also-box a { color: #0056b3; text-decoration: none; font-weight: 600; }
+        .read-also-box a:hover { text-decoration: underline; }
+        .author-box {
+            background: #f9fbf9;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+        }
+        .author-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        .btn-share {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: 0.3s;
+            border: 1px solid #ddd;
+            color: #555;
+            text-decoration: none;
+            margin-right: 8px;
+        }
+        .btn-share:hover { transform: translateY(-3px); border-color: transparent; color: white; }
+        .share-wa:hover { background-color: #25D366; }
+        .share-fb:hover { background-color: #1877F2; }
+        .share-copy:hover { background-color: #333; }
+        .related-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            height: 100%;
+        }
+        .related-card:hover { transform: translateY(-5px); }
+        .related-img { height: 180px; object-fit: cover; width: 100%; }
+        .related-body { padding: 20px; }
+        .related-title { font-size: 1.1rem; font-weight: 700; line-height: 1.4; }
+        .related-title a { text-decoration: none; color: #333; }
+
+        /* --- FOOTER (UPDATED) --- */
+        footer { background-color: #152920; color: #e0e0e0; padding-top: 70px; }
+        footer h5 { color: white; margin-bottom: 20px; font-size: 1.2rem; }
+        footer a { color: #aaa; text-decoration: none; transition: 0.3s; }
+        footer a:hover { color: var(--secondary-gold); }
+        .copyright { background-color: #0d1b15; padding: 25px 0; margin-top: 50px; font-size: 0.9rem; }
+        .footer-map { width: 100%; height: 200px; border: 0; border-radius: 8px; opacity: 0.8; transition: 0.3s; }
+        .footer-map:hover { opacity: 1; }
+
+        /* --- FLOATING BUTTONS (ADDED) --- */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        .btn-float {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 26px;
+            border: none;
+            outline: none;
+        }
+        .btn-float:hover {
+            transform: translateY(-5px);
+            color: white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+        .wa-float { background-color: #25D366; }
+        .wa-float:hover { background-color: #20b957; }
+        .top-float {
+            background-color: var(--primary-green);
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        .top-float.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .top-float:hover {
+            background-color: #1e3d2d;
+            transform: translateY(-5px);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .article-title { font-size: 1.8rem; }
+            .author-box { flex-direction: column; text-align: center; }
+            .author-img { margin-right: 0; margin-bottom: 15px; }
+            .floating-container { bottom: 20px; right: 20px; }
+            .btn-float { width: 50px; height: 50px; font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-mosque me-2 text-success"></i> Masjid Syamsul Huda
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center text-center mt-3 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profil-masjid.html">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="program.html">Program</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pendidikan.html">Pendidikan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dkm.html">DKM</a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Event
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="event.html">Semua Agenda</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="event-details.html">Maulid Nabi</a></li>
+                            <li><a class="dropdown-item" href="#">Ramadhan 1447H</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link active" href="blog.html">Berita</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="index.html#donasi" class="btn btn-donate w-100 w-lg-auto"><i class="fas fa-heart me-2"></i>Donasi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="article-header">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted">Beranda</a></li>
+                            <li class="breadcrumb-item"><a href="blog.html" class="text-decoration-none text-muted">Blog</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Kajian Rutin</li>
+                        </ol>
+                    </nav>
+
+                    <div class="article-meta d-flex align-items-center flex-wrap">
+                        <span class="article-category">Kajian Rutin</span>
+                        <span class="me-3 text-muted"><i class="far fa-calendar-alt me-1"></i> 29 Desember 2025</span>
+                        <span class="text-muted"><i class="far fa-user me-1"></i> Oleh: Ustadz Abdullah</span>
+                    </div>
+                    
+                    <h1 class="article-title mt-3">Keutamaan Sholat Berjamaah di Masjid bagi Laki-laki: Penjelasan Lengkap dan Hadits</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <article class="article-wrapper">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    
+                    <img src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Sholat Berjamaah" class="main-article-img">
+
+                    <div class="article-content">
+                        
+                        <div class="accordion toc-box" id="tocAccordion">
+                            <div class="accordion-item border-0 bg-transparent">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTOC" aria-expanded="true" aria-controls="collapseTOC">
+                                        <span class="toc-title"><i class="fas fa-list-ul me-2"></i> Daftar Isi Artikel</span>
+                                    </button>
+                                </h2>
+                                <div id="collapseTOC" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#tocAccordion">
+                                    <div class="accordion-body">
+                                        <ul class="toc-list" id="tocList">
+                                            </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Sholat berjamaah memiliki kedudukan yang sangat agung dalam Islam. Bagi seorang laki-laki muslim yang sudah baligh, melaksanakan sholat fardhu secara berjamaah di masjid bukan hanya sekadar anjuran biasa, melainkan sebuah syiar Islam yang sangat ditekankan. Artikel ini akan membahas secara mendalam mengenai keutamaan, dalil, dan manfaat dari sholat berjamaah.</p>
+
+                        <h2>1. Dalil-dalil Tentang Sholat Berjamaah</h2>
+                        <p>Banyak sekali hadits Nabi Muhammad SAW yang menjelaskan betapa besarnya pahala sholat berjamaah dibandingkan sholat sendirian. Salah satu hadits yang paling masyhur adalah:</p>
+
+                        <blockquote>
+                            "Shalat jamaah lebih utama 27 derajat dibanding shalat sendirian." <br>
+                            <span class="fs-6 mt-2 d-block text-end">- (HR. Bukhari dan Muslim)</span>
+                        </blockquote>
+
+                        <p>Hadits di atas menunjukkan perbandingan yang sangat mencolok. Bayangkan, satu kali sholat berjamaah nilainya setara dengan dua puluh tujuh kali sholat sendirian. Ini adalah bonus pahala yang luar biasa dari Allah SWT bagi hamba-Nya yang mau melangkahkan kaki ke masjid.</p>
+
+                        <div class="read-also-box">
+                            <span>Baca Juga:</span> <a href="#">Hukum Meninggalkan Sholat Jumat Bagi Musafir</a>
+                        </div>
+
+                        <h2>2. Langkah Kaki yang Menghapus Dosa</h2>
+                        <p>Selain pahala sholat itu sendiri, proses menuju masjid pun sudah dihitung sebagai ibadah. Setiap langkah kaki seorang mukmin menuju masjid memiliki dua keutamaan: satu langkah meninggikan derajat, dan langkah lainnya menghapuskan dosa.</p>
+
+                        <h3>Pentingnya Niat yang Ikhlas</h3>
+                        <p>Tentu saja, semua keutamaan tersebut hanya bisa didapatkan jika didasari dengan niat yang ikhlas karena Allah Ta'ala, bukan karena ingin dipuji atau dilihat orang lain (riya').</p>
+
+                        <figure class="my-4">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6w5N7u2s11OQhHrLh_1dVs9PH2eUeNpgP7HWXyoZFAr3zVni0vd96XFVxXcUCHYBW7jqNklV5thzmm9nj_Xgu8pkWY_QtbSGSOAfpvukbIaj9pw9Orx90-ik_jPY7To0SN3u7bKH9RAoxmrHwnf3zEgSTHdSjywNcsT3B8wzG5a9bfNysDHB8qQ0zgrc/s960/snapedit_1764261845578.jpeg" class="img-fluid rounded" alt="Suasana Masjid">
+                            <figcaption class="text-center text-muted small mt-2 fst-italic">Suasana sholat berjamaah di Masjid Syamsul Huda</figcaption>
+                        </figure>
+
+                        <h2>3. Membangun Ukhuwah Islamiyah</h2>
+                        <p>Sholat berjamaah adalah sarana paling efektif untuk membangun persaudaraan (ukhuwah) antar sesama muslim. Di dalam shaf sholat, tidak ada perbedaan antara kaya dan miskin, pejabat dan rakyat biasa. Semuanya berdiri sejajar menghadap Rabb yang sama.</p>
+                        <p>Dengan rutin bertemu lima waktu sehari semalam, antar tetangga bisa saling mengetahui kondisi satu sama lain. Jika ada yang sakit, segera ketahuan karena absen dari jamaah. Inilah fungsi sosial dari masjid yang sesungguhnya.</p>
+
+                        <h2>4. Penutup dan Kesimpulan</h2>
+                        <p>Marilah kita hidupkan masjid-masjid kita dengan sholat berjamaah. Bagi para laki-laki, masjid adalah tempat terbaik untuk menunaikan kewajiban. Semoga Allah SWT memberikan kita keistiqomahan dalam beribadah.</p>
+
+                    </div>
+                    
+                    <div class="mt-5 pt-4 border-top">
+                        <div class="d-flex align-items-center">
+                            <span class="fw-bold me-3 text-secondary">Bagikan Artikel:</span>
+                            <a href="javascript:void(0)" onclick="shareToWA()" class="btn-share share-wa" title="Share ke WhatsApp">
+                                <i class="fab fa-whatsapp fs-5"></i>
+                            </a>
+                            <a href="javascript:void(0)" onclick="shareToFB()" class="btn-share share-fb" title="Share ke Facebook">
+                                <i class="fab fa-facebook-f fs-5"></i>
+                            </a>
+                            <a href="javascript:void(0)" onclick="copyLink()" class="btn-share share-copy" title="Salin Link">
+                                <i class="fas fa-link fs-5"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="author-box">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Penulis" class="author-img">
+                        <div>
+                            <h5 class="fw-bold mb-1">Ustadz H. Abdullah</h5>
+                            <p class="text-muted small mb-2">Ketua Takmir Masjid Syamsul Huda</p>
+                            <p class="mb-0 small">Beliau adalah alumni Universitas Islam Madinah dan aktif mengisi kajian tafsir serta fiqih di berbagai majelis taklim di Kota Malang.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-8">
+                    <h3 class="fw-bold border-start border-5 border-success ps-3">Artikel Terkait</h3>
+                </div>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-lg-8">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="related-card bg-white">
+                                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" class="related-img" alt="Rel 1">
+                                <div class="related-body">
+                                    <div class="small text-muted mb-2">Fiqih & Ibadah</div>
+                                    <h4 class="related-title"><a href="#">Hukum Zakat Mal dan Cara Menghitungnya</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="related-card bg-white">
+                                <img src="https://images.unsplash.com/photo-1564121211835-e88c852648ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" class="related-img" alt="Rel 2">
+                                <div class="related-body">
+                                    <div class="small text-muted mb-2">Sejarah Islam</div>
+                                    <h4 class="related-title"><a href="#">Kisah Keteladanan Abu Bakar Ash-Shiddiq</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="related-card bg-white">
+                                <img src="https://images.unsplash.com/photo-1596568853629-87a4143a5793?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" class="related-img" alt="Rel 3">
+                                <div class="related-body">
+                                    <div class="small text-muted mb-2">Laporan Kegiatan</div>
+                                    <h4 class="related-title"><a href="#">Dokumentasi Santunan Yatim Bulan Ini</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold text-white"><i class="fas fa-mosque me-2"></i> Masjid Syamsul Huda</h5>
+                    <p class="mt-3 text-white-50 small">
+                        Jl. Simpang Candi Panggung No. 23<br>
+                        Mojolangu, Lowokwaru, Kota Malang, Jawa Timur<br>
+                        Kode Pos 65141
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="fs-5"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4 col-6">
+                    <h5>Navigasi</h5>
+                    <ul class="list-unstyled mt-3 small">
+                        <li class="mb-2"><a href="index.html">Beranda</a></li>
+                        <li class="mb-2"><a href="profil-masjid.html">Profil Masjid</a></li>
+                        <li class="mb-2"><a href="galeri.html">Galeri</a></li>
+                        <li class="mb-2"><a href="laporan.html">Laporan Keuangan</a></li>
+                        <li class="mb-2"><a href="blog">Artikel & Berita</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4 col-6">
+                    <h5>Layanan</h5>
+                    <ul class="list-unstyled mt-3 small">
+                        <li class="mb-2"><a href="#">Konsultasi Syariah</a></li>
+                        <li class="mb-2"><a href="program.html">Program DKM</a></li>
+                        <li class="mb-2"><a href="pendidikan.html">Pendidikan</a></li>
+                        <li class="mb-2"><a href="event.html">Event PHBI</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Lokasi Kami</h5>
+                    <div class="mt-3">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1011547.1639865536!2d112.01189142325426!3d-7.962101287934152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78820a2160b241%3A0x1f1cb525869e9a24!2s%22YAYASAN%20MASJID%20SAMSUL%20HUDA%22!5e0!3m2!1sid!2sid!4v1767131227588!5m2!1sid!2sid" 
+                                class="footer-map" allowfullscreen="" loading="lazy"></iframe>
+                        <a href="https://maps.app.goo.gl/7hdpxZ9sThkx45sNA" target="_blank" class="text-white-50 small mt-2 d-block text-decoration-none">
+                            <i class="fas fa-map-marked-alt me-1"></i> Buka di Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center text-white-50">
+            <div class="container">
+                <small>© 2024 Masjid Syamsul Huda Malang. All Rights Reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-container">
+        <button class="btn-float top-float" id="btnBackToTop" title="Kembali ke Atas">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <a href="https://wa.me/62895639068080?text=Assalamu%27alaikum%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20Artikel%20Islam" target="_blank" class="btn-float wa-float" title="Chat Takmir">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // 1. Auto Generate TOC (Bug Fixed for Accordion)
+        document.addEventListener('DOMContentLoaded', function() {
+            const tocList = document.getElementById('tocList');
+            const headings = document.querySelectorAll('.article-content h2:not(.accordion-header)'); 
+
+            if (headings.length === 0) {
+                document.getElementById('tocAccordion').style.display = 'none'; 
+            } else {
+                headings.forEach((heading, index) => {
+                    if (heading.closest('.toc-box')) return;
+                    if (!heading.id) { heading.id = 'section-' + index; }
+
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = '#' + heading.id;
+                    a.textContent = heading.textContent;
+                    
+                    a.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        if(window.innerWidth < 768) {
+                            var bsCollapse = new bootstrap.Collapse(document.getElementById('collapseTOC'), { toggle: true });
+                        }
+                    });
+
+                    li.appendChild(a);
+                    tocList.appendChild(li);
+                });
+            }
+        });
+
+        // 2. Share Functionality
+        const pageUrl = encodeURIComponent(window.location.href);
+        const pageTitle = encodeURIComponent(document.title);
+
+        function shareToWA() { window.open(`https://wa.me/?text=${pageTitle}%0A${pageUrl}`, '_blank'); }
+        function shareToFB() { window.open(`https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`, '_blank'); }
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href);
+            alert('Link artikel berhasil disalin!');
+        }
+
+        // 3. Scroll to Top Logic
+        const btnBackToTop = document.getElementById("btnBackToTop");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btnBackToTop.classList.add("show");
+            } else {
+                btnBackToTop.classList.remove("show");
+            }
+        };
+        btnBackToTop.addEventListener("click", function(){
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
+</body>
+</html>

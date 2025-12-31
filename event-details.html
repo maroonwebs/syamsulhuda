@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event & Promosi - Masjid Syamsul Huda</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLE WARNA --- */
+        :root {
+            --primary-green: #2E5A43;
+            --secondary-gold: #C5A059;
+            --light-bg: #F8F9FA;
+            --dark-text: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-text);
+            overflow-x: hidden;
+            background-color: #f9fbf9;
+        }
+
+        h1, h2, h3, h4, h5, .navbar-brand, .display-6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- NAVBAR (UPDATED) --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-green) !important;
+            font-size: 1.35rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #555 !important;
+            margin: 0 8px;
+            font-size: 0.95rem;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-green) !important;
+        }
+        
+        /* CSS DROPDOWN (Added for Navbar) */
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        .dropdown-item {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .dropdown-item:hover {
+            background-color: #f0f7f4;
+            color: var(--primary-green);
+        }
+        .dropdown-item.active {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .btn-donate {
+            background-color: var(--primary-green);
+            color: white;
+            border-radius: 6px;
+            padding: 8px 24px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .btn-donate:hover {
+            background-color: #1e3d2d;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- HEADER BANNER (NO CROP) --- */
+        .promo-header {
+            padding-top: 100px;
+            padding-bottom: 40px;
+            background-color: white;
+        }
+        .promo-banner-img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- TEXT SECTION --- */
+        .promo-content {
+            padding: 40px 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+        .promo-title {
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- MIXED GALLERY LAYOUT --- */
+        .mixed-gallery img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .mixed-gallery img:hover {
+            transform: scale(1.02);
+        }
+        .img-large { height: 400px; }
+        .img-medium { height: 250px; }
+        .img-small { height: 180px; }
+
+        /* --- TABS GALERI STYLE --- */
+        .promo-tabs-section {
+            background-color: white;
+            padding: 80px 0;
+            border-top: 1px solid #eee;
+        }
+        .custom-promo-tabs {
+            border: none;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        .custom-promo-tabs .nav-link {
+            color: #444;
+            background-color: #f1f3f5;
+            border: 1px solid #dee2e6;
+            border-radius: 50px;
+            padding: 12px 35px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+        .custom-promo-tabs .nav-link.active {
+            background-color: var(--primary-green) !important;
+            color: white !important;
+            border-color: var(--primary-green);
+            box-shadow: 0 5px 15px rgba(46, 90, 67, 0.4);
+            transform: translateY(-2px);
+        }
+        .custom-promo-tabs .nav-link:hover:not(.active) {
+            background-color: var(--secondary-gold);
+            color: white;
+            border-color: var(--secondary-gold);
+        }
+
+        /* --- DONATION FORM SECTION (NEW) --- */
+        .donation-section {
+            background: linear-gradient(rgba(46, 90, 67, 0.9), rgba(46, 90, 67, 0.95)), 
+                        url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            padding: 80px 0;
+        }
+        .donation-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .qr-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px dashed var(--primary-green);
+        }
+        .qr-img {
+            max-width: 200px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .form-control-custom {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: #fcfcfc;
+        }
+        .form-control-custom:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(46, 90, 67, 0.1);
+        }
+
+        /* --- FOOTER --- */
+        footer { background-color: #152920; color: #e0e0e0; padding-top: 70px; }
+        footer h5 { color: white; margin-bottom: 20px; font-size: 1.2rem; }
+        footer a { color: #aaa; text-decoration: none; transition: 0.3s; }
+        footer a:hover { color: var(--secondary-gold); }
+        .copyright { background-color: #0d1b15; padding: 25px 0; margin-top: 50px; font-size: 0.9rem; }
+        .footer-map { width: 100%; height: 200px; border: 0; border-radius: 8px; opacity: 0.8; transition: 0.3s; }
+        .footer-map:hover { opacity: 1; }
+
+        /* --- FLOATING BUTTONS --- */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        .btn-float {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 26px;
+            border: none;
+            outline: none;
+        }
+        .btn-float:hover {
+            transform: translateY(-5px);
+            color: white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+        .wa-float { background-color: #25D366; }
+        .wa-float:hover { background-color: #20b957; }
+        .top-float {
+            background-color: var(--primary-green);
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        .top-float.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .top-float:hover {
+            background-color: #1e3d2d;
+            transform: translateY(-5px);
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .promo-title { font-size: 1.8rem; }
+            .img-large, .img-medium, .img-small { height: auto; aspect-ratio: 16/9; } 
+            .promo-tabs-section { padding: 50px 0; }
+            .custom-promo-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 15px;
+                padding-left: 15px;
+                padding-right: 15px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            .custom-promo-tabs::-webkit-scrollbar { display: none; }
+            .custom-promo-tabs .nav-link {
+                white-space: nowrap;
+                flex: 0 0 auto;
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+            .floating-container { bottom: 20px; right: 20px; }
+            .btn-float { width: 50px; height: 50px; font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-mosque me-2 text-success"></i> Masjid Syamsul Huda
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center text-center mt-3 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profil-masjid.html">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="program.html">Program</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pendidikan.html">Pendidikan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dkm.html">DKM</a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Event
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item active" href="event.html">Semua Agenda</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="event-details.html">Maulid Nabi</a></li>
+                            <li><a class="dropdown-item" href="#">Isra Mi'raj</a></li>
+                            <li><a class="dropdown-item" href="#">Ramadhan 1447H</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Berita</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="#donasi" class="btn btn-donate w-100 w-lg-auto"><i class="fas fa-heart me-2"></i>Donasi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="promo-header">
+        <div class="container">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipgyQ0rws8iLShPiEAJBzmiygwU1C9VFej67a4_Sop1LWqlhX9n18aCOCIe5XT_Sb33_KTErE3gZBOVA-4RJyxCzNfEFFtDROHZE_Pa02A06WjV70AQ6iIj5IDXZn5GHJJFBAIRadihuGrlKD2ZxuIRaCJB4Bzc37wIeWYfGzfv8E9QiywOZBBCRQ-OlI/w640-h328/masjid%20hero%202%20(1)%20(1).webp" 
+                 alt="Banner Event Utama" class="promo-banner-img">
+        </div>
+    </header>
+
+    <section class="promo-content bg-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <span class="badge bg-warning text-dark mb-2 px-3 py-2 rounded-pill">Event Terdekat</span>
+                    <h1 class="promo-title">Gema Maulid Nabi Muhammad SAW & Santunan Akbar</h1>
+                    <p>
+                        Assalamu'alaikum Warahmatullahi Wabarakatuh. <br>
+                        Hadirilah dan syiarkanlah peringatan Maulid Nabi Muhammad SAW 1446 H bersama Masjid Syamsul Huda. 
+                        Momentum ini akan kita jadikan sebagai sarana meneladani akhlak Rasulullah dan berbagi kebahagiaan 
+                        melalui santunan kepada 100 anak yatim piatu di lingkungan sekitar.
+                    </p>
+                    <p>
+                        Acara akan dimeriahkan dengan pembacaan Simtudduror, Tausiyah Agama oleh KH. Ahmad Dahlan, 
+                        serta ramah tamah jamaah. Mari ajak keluarga dan sahabat untuk meraih keberkahan majelis ini.
+                    </p>
+                    <hr class="my-4 w-50 mx-auto text-success">
+                    <div class="d-flex justify-content-center gap-3 fw-bold text-secondary">
+                        <span><i class="far fa-calendar-check me-2 text-success"></i> Ahad, 12 Rabiul Awal</span>
+                        <span><i class="far fa-clock me-2 text-success"></i> 08.00 WIB - Selesai</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding mixed-gallery" style="padding-bottom: 60px;">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h3 class="fw-bold">Dokumentasi & Persiapan</h3>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-12">
+                    <img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                         class="img-large shadow-sm" alt="Suasana Utama">
+                </div>
+                <div class="col-md-6 col-6">
+                    <img src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         class="img-medium shadow-sm" alt="Persiapan 1">
+                </div>
+                <div class="col-md-6 col-6">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgphmnlWLwJqE4NyybJi1IjtTFYiwS-yHZRowYvfVSmQUXRkIckZGOeYONMmFTKf3O05BbqY2DtXeRZ7TprWrvXGejB-KNPgAZ82vqaB5NiMCfKaZmLWUntYf9rkzCoUA-a8jD9FQEZoQsVuyHJl_i_VnFTzCecC5MJ0vtUiH856TJXtJDcAQTu1ddM-tY/s16000/Background.webp" 
+                         class="img-medium shadow-sm" alt="Persiapan 2">
+                </div>
+                <div class="col-md-4 col-4">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipgyQ0rws8iLShPiEAJBzmiygwU1C9VFej67a4_Sop1LWqlhX9n18aCOCIe5XT_Sb33_KTErE3gZBOVA-4RJyxCzNfEFFtDROHZE_Pa02A06WjV70AQ6iIj5IDXZn5GHJJFBAIRadihuGrlKD2ZxuIRaCJB4Bzc37wIeWYfGzfv8E9QiywOZBBCRQ-OlI/s899/masjid%20hero%202%20(1)%20(1).webp" 
+                         class="img-small shadow-sm" alt="Detail 1">
+                </div>
+                <div class="col-md-4 col-4">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjd3GEXToklJZWbsWLL_xZd5B7dOBgGC0Qe-CpaiV6Ufbc55VCbYxqefi3LIglEEbW-zGuglwSLmNH2icXEn8VmXubgxCFkK_3hp1GJM2YcdZVJN6D4hBCAaMKKpwtOn8otKCqFxOStSl3kalO9lQbJmO00va8s0em8D_G_DPgbqUw6m1nLOW-bCdYbSpw/s875/Layanan-Paket-Umroh-Haji.webp" 
+                         class="img-small shadow-sm" alt="Detail 2">
+                </div>
+                <div class="col-md-4 col-4">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixwcgZcj-_WMDCnIpgJIyExg4fO-2eVeQQrqOPClJV-6iQQyWxEXASN7O-lq9q9ZZDj6ZGOvzc4o1J3JvspD0ybVIDvoRO9PuWqeN41QLsf1OWip0_6PX364sfdyDK0ISyGJUFh73JYvk0JpMLNI7qvtyXjP_yUcGp6mSy1IP_EceNgT5wCT-zadulaUg/s1080/Lead-Page.webp" 
+                         class="img-small shadow-sm" alt="Detail 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="promo-tabs-section">
+        <div class="container">
+            <ul class="nav nav-pills custom-promo-tabs" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-poster-tab" data-bs-toggle="pill" data-bs-target="#pills-poster" type="button">Poster Dakwah</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-video-tab" data-bs-toggle="pill" data-bs-target="#pills-video" type="button">Video Teaser</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-denah-tab" data-bs-toggle="pill" data-bs-target="#pills-denah" type="button">Denah Lokasi</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active text-center" id="pills-poster" role="tabpanel">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4 mb-3">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjd3GEXToklJZWbsWLL_xZd5B7dOBgGC0Qe-CpaiV6Ufbc55VCbYxqefi3LIglEEbW-zGuglwSLmNH2icXEn8VmXubgxCFkK_3hp1GJM2YcdZVJN6D4hBCAaMKKpwtOn8otKCqFxOStSl3kalO9lQbJmO00va8s0em8D_G_DPgbqUw6m1nLOW-bCdYbSpw/s16000/Layanan-Paket-Umroh-Haji.webp" class="img-fluid rounded shadow-sm" alt="Poster 1">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjd3GEXToklJZWbsWLL_xZd5B7dOBgGC0Qe-CpaiV6Ufbc55VCbYxqefi3LIglEEbW-zGuglwSLmNH2icXEn8VmXubgxCFkK_3hp1GJM2YcdZVJN6D4hBCAaMKKpwtOn8otKCqFxOStSl3kalO9lQbJmO00va8s0em8D_G_DPgbqUw6m1nLOW-bCdYbSpw/s16000/Layanan-Paket-Umroh-Haji.webp" class="img-fluid rounded shadow-sm" alt="Poster 2">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade text-center" id="pills-video" role="tabpanel">
+                    <div class="ratio ratio-16x9 mx-auto shadow-sm rounded overflow-hidden" style="max-width: 800px;">
+                        <iframe src="https://www.youtube.com/embed/EVDReUWPcjI" title="YouTube video" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="tab-pane fade text-center" id="pills-denah" role="tabpanel">
+                    <img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded shadow-sm" style="max-height: 400px;" alt="Denah">
+                    <p class="mt-3 text-muted">Lokasi Parkir Utama di Halaman Utara Masjid</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="donasi-form" class="donation-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="donation-card">
+                        <div class="text-center mb-5">
+                            <h2 class="fw-bold mb-2">Formulir Donasi Event</h2>
+                            <p class="text-muted">Partisipasi anda sangat berarti bagi kelancaran acara ini.</p>
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-md-7 mb-4 mb-md-0 border-end border-light">
+                                <form id="waForm">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small text-secondary">Nama Lengkap</label>
+                                        <input type="text" id="namaDonatur" class="form-control form-control-custom" placeholder="Contoh: H. Fulan">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold small text-secondary">Pilih Paket / Nominal</label>
+                                        <select id="paketDonasi" class="form-select form-control-custom mb-2">
+                                            <option value="Paket Yatim (Rp 150.000)">Paket Santunan Yatim (Rp 150.000)</option>
+                                            <option value="Paket Konsumsi (Rp 500.000)">Paket Konsumsi Jamaah (Rp 500.000)</option>
+                                            <option value="Infaq Operasional (Seikhlasnya)">Infaq Operasional (Seikhlasnya)</option>
+                                        </select>
+                                        <input type="number" id="nominalLain" class="form-control form-control-custom d-none" placeholder="Masukkan Nominal (Rp)">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label fw-bold small text-secondary">Pesan / Doa</label>
+                                        <textarea id="pesanDonatur" class="form-control form-control-custom" rows="3" placeholder="Semoga berkah..."></textarea>
+                                    </div>
+                                    <button type="button" onclick="kirimKeWA()" class="btn btn-success w-100 py-3 fw-bold rounded-pill shadow">
+                                        <i class="fab fa-whatsapp fa-lg me-2"></i> Konfirmasi via WhatsApp
+                                    </button>
+                                </form>
+                            </div>
+
+                            <div class="col-md-5">
+                                <div class="qr-box">
+                                    <h5 class="fw-bold mb-3 text-success">Scan QRIS</h5>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" 
+                                         alt="QR Code Donasi" class="qr-img">
+                                    <p class="small text-muted mb-1">A.n Masjid Syamsul Huda</p>
+                                    <p class="fw-bold text-dark">NMID: ID10200300400</p>
+                                    <hr>
+                                    <div class="d-flex justify-content-center align-items-center gap-2 text-muted small">
+                                        <i class="fas fa-university"></i>
+                                        <span>BSI: <b>1234-5678-90</b></span>
+                                        <i class="far fa-copy cursor-pointer" title="Copy" onclick="alert('No Rekening Disalin!')"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold text-white"><i class="fas fa-mosque me-2"></i> Masjid Syamsul Huda</h5>
+                    <p class="mt-3 text-white-50 small">
+                        Jl. Simpang Candi Panggung No. 23<br>
+                        Mojolangu, Lowokwaru, Kota Malang, Jawa Timur<br>
+                        Kode Pos 65141
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="fs-5"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4 col-6">
+                    <h5>Navigasi</h5>
+                    <ul class="list-unstyled mt-3 small">
+                        <li class="mb-2"><a href="index.html">Beranda</a></li>
+                        <li class="mb-2"><a href="profil-masjid.html">Profil Masjid</a></li>
+                        <li class="mb-2"><a href="galeri.html">Galeri</a></li>
+                        <li class="mb-2"><a href="laporan.html">Laporan Keuangan</a></li>
+                        <li class="mb-2"><a href="blog">Artikel & Berita</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4 col-6">
+                    <h5>Layanan</h5>
+                    <ul class="list-unstyled mt-3 small">
+                        <li class="mb-2"><a href="#">Konsultasi Syariah</a></li>
+                        <li class="mb-2"><a href="program.html">Program DKM</a></li>
+                        <li class="mb-2"><a href="pendidikan.html">Pendidikan</a></li>
+                        <li class="mb-2"><a href="event.html">Event PHBI</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Lokasi Kami</h5>
+                    <div class="mt-3">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1011547.1639865536!2d112.01189142325426!3d-7.962101287934152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78820a2160b241%3A0x1f1cb525869e9a24!2s%22YAYASAN%20MASJID%20SAMSUL%20HUDA%22!5e0!3m2!1sid!2sid!4v1767131227588!5m2!1sid!2sid" 
+                                class="footer-map" allowfullscreen="" loading="lazy"></iframe>
+                        <a href="https://maps.app.goo.gl/7hdpxZ9sThkx45sNA" target="_blank" class="text-white-50 small mt-2 d-block text-decoration-none">
+                            <i class="fas fa-map-marked-alt me-1"></i> Buka di Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center text-white-50">
+            <div class="container">
+                <small>© 2024 Masjid Syamsul Huda Malang. All Rights Reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-container">
+        <button class="btn-float top-float" id="btnBackToTop" title="Kembali ke Atas">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <a href="https://wa.me/62895639068080?text=Assalamu%27alaikum%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20Masjid%20Syamsul%20Huda" target="_blank" class="btn-float wa-float" title="Chat Takmir">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Form Logic
+        const selectPaket = document.getElementById('paketDonasi');
+        const inputLain = document.getElementById('nominalLain');
+
+        if(selectPaket) {
+            selectPaket.addEventListener('change', function() {
+                if(this.value.includes('Seikhlasnya')) {
+                    inputLain.classList.remove('d-none');
+                    inputLain.focus();
+                } else {
+                    inputLain.classList.add('d-none');
+                }
+            });
+        }
+
+        function kirimKeWA() {
+            const nama = document.getElementById('namaDonatur').value || 'Hamba Allah';
+            let paket = selectPaket.value;
+            const pesan = document.getElementById('pesanDonatur').value;
+            
+            if(paket.includes('Seikhlasnya')) {
+                const nominal = inputLain.value;
+                if(!nominal) {
+                    alert('Mohon isi nominal donasi.');
+                    return;
+                }
+                paket = 'Rp ' + parseInt(nominal).toLocaleString('id-ID');
+            }
+
+            const text = `Assalamu'alaikum Admin,%0A%0ASaya ingin donasi untuk Event Masjid.%0A%0A👤 Nama: ${nama}%0A💰 Nominal: ${paket}%0A📝 Pesan: ${pesan}%0A%0AMohon info rekening / konfirmasi. Terima kasih.`;
+            
+            window.open(`https://wa.me/62895639068080?text=${text}`, '_blank');
+        }
+
+        // Scroll to Top Logic
+        const btnBackToTop = document.getElementById("btnBackToTop");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btnBackToTop.classList.add("show");
+            } else {
+                btnBackToTop.classList.remove("show");
+            }
+        };
+
+        btnBackToTop.addEventListener("click", function(){
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
+</body>
+</html>

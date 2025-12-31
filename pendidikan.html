@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembaga Pendidikan - Masjid Syamsul Huda</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLE WARNA --- */
+        :root {
+            --primary-green: #2E5A43;
+            --secondary-gold: #C5A059;
+            --light-bg: #F8F9FA;
+            --dark-text: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-text);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, .navbar-brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- NAVBAR (UPDATED) --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-green) !important;
+            font-size: 1.35rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #555 !important;
+            margin: 0 8px;
+            font-size: 0.95rem;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-green) !important;
+        }
+        
+        /* CSS DROPDOWN (Added for Navbar) */
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        .dropdown-item {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .dropdown-item:hover {
+            background-color: #f0f7f4;
+            color: var(--primary-green);
+        }
+        .dropdown-item.active {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .btn-donate {
+            background-color: var(--primary-green);
+            color: white;
+            border-radius: 6px;
+            padding: 8px 24px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .btn-donate:hover {
+            background-color: #1e3d2d;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- PAGE HEADER BANNER --- */
+        .page-header {
+            background: linear-gradient(rgba(46, 90, 67, 0.8), rgba(46, 90, 67, 0.8)), 
+                        url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding-top: 80px;
+        }
+        .breadcrumb-custom .breadcrumb-item a { color: #ddd; text-decoration: none; }
+        .breadcrumb-custom .breadcrumb-item.active { color: var(--secondary-gold); }
+
+        /* --- UNIT PENDIDIKAN SECTION (ZIG-ZAG LAYOUT) --- */
+        .edu-section {
+            padding: 80px 0;
+        }
+        .edu-img-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .edu-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .edu-img-wrapper:hover .edu-img {
+            transform: scale(1.05);
+        }
+        .edu-badge {
+            display: inline-block;
+            background-color: var(--secondary-gold);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .feature-list li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .feature-list i {
+            color: var(--primary-green);
+            margin-right: 10px;
+        }
+
+        /* --- PPDB CTA SECTION --- */
+        .ppdb-section {
+            background-color: #f4f8f6;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .ppdb-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(46, 90, 67, 0.08);
+            border: 1px solid #e0e0e0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- FOOTER --- */
+        footer { background-color: #152920; color: #e0e0e0; padding-top: 70px; }
+        footer h5 { color: white; margin-bottom: 20px; font-size: 1.2rem; }
+        footer a { color: #aaa; text-decoration: none; transition: 0.3s; }
+        footer a:hover { color: var(--secondary-gold); }
+        .copyright { background-color: #0d1b15; padding: 25px 0; margin-top: 50px; font-size: 0.9rem; }
+        .footer-map { width: 100%; height: 200px; border: 0; border-radius: 8px; opacity: 0.8; transition: 0.3s; }
+        .footer-map:hover { opacity: 1; }
+
+        /* --- FLOATING BUTTONS --- */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        .btn-float {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 26px;
+            border: none;
+            outline: none;
+        }
+        .btn-float:hover {
+            transform: translateY(-5px);
+            color: white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+        .wa-float { background-color: #25D366; }
+        .wa-float:hover { background-color: #20b957; }
+        .top-float {
+            background-color: var(--primary-green);
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        .top-float.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .top-float:hover {
+            background-color: #1e3d2d;
+            transform: translateY(-5px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .edu-section { padding: 50px 0; }
+            .edu-img { height: 250px; margin-bottom: 20px; }
+            /* Memastikan teks selalu di bawah gambar di mobile */
+            .order-lg-2 { order: -1 !important; } 
+            
+            .floating-container { bottom: 20px; right: 20px; }
+            .btn-float { width: 50px; height: 50px; font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-mosque me-2 text-success"></i> Masjid Syamsul Huda
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center text-center mt-3 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profil-masjid.html">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="program.html">Program</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Pendidikan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dkm.html">DKM</a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Event
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item active" href="event.html">Semua Agenda</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="event-details.html">Maulid Nabi</a></li>
+                            <li><a class="dropdown-item" href="#">Ramadhan 1447H</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Berita</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="index.html#donasi" class="btn btn-donate w-100 w-lg-auto"><i class="fas fa-heart me-2"></i>Donasi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Lembaga Pendidikan</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-custom justify-content-center">
+                    <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Pendidikan</li>
+                </ol>
+            </nav>
+        </div>
+    </header>
+
+    <section class="py-5 text-center bg-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="fw-bold mb-3" style="font-family: 'Playfair Display', serif; color: var(--primary-green);">Membangun Generasi Rabbani</h2>
+                    <p class="text-muted lead">
+                        Dari usia dini hingga dewasa, kami menyediakan lingkungan pendidikan yang kondusif 
+                        untuk mempelajari ilmu agama dan Al-Qur'an secara kaffah.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="edu-section" style="background-color: #f9fbf9;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="edu-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kegiatan RA" class="edu-img">
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <span class="edu-badge">USIA 4 - 6 TAHUN</span>
+                    <h2 class="fw-bold mb-3">RA Syamsul Huda (TK Islam)</h2>
+                    <p class="text-muted mb-4">
+                        Pendidikan anak usia dini berbasis nilai-nilai Islam. Kami memadukan kurikulum nasional dengan pembiasaan adab dan akhlak mulia sejak dini dalam suasana belajar yang ceria.
+                    </p>
+                    <ul class="list-unstyled feature-list mb-4">
+                        <li><i class="fas fa-check-circle"></i> Hafalan Doa Harian & Surat Pendek</li>
+                        <li><i class="fas fa-check-circle"></i> Pembelajaran Calistung Dasar</li>
+                        <li><i class="fas fa-check-circle"></i> Outbound & Wisata Edukasi</li>
+                        <li><i class="fas fa-check-circle"></i> Pengenalan Sholat Dhuha</li>
+                    </ul>
+                    <a href="https://wa.me/62895639068080?text=Assalamu%27alaikum%2C%20saya%20tertarik%20mendaftar%20RA%20(TK)%20Syamsul%20Huda" target="_blank" class="btn btn-outline-success rounded-pill px-4">Daftar RA Sekarang <i class="fab fa-whatsapp ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="edu-section bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0 order-lg-2">
+                    <div class="edu-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1585036156171-384164a8c675?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kegiatan TPQ" class="edu-img">
+                    </div>
+                </div>
+                <div class="col-lg-6 pe-lg-5 order-lg-1">
+                    <span class="edu-badge">USIA 6 - 12 TAHUN</span>
+                    <h2 class="fw-bold mb-3">TPQ Syamsul Huda</h2>
+                    <p class="text-muted mb-4">
+                        Mewujudkan generasi cinta Al-Qur'an. Program sore hari yang fokus pada kemampuan membaca Al-Qur'an dengan tartil, tajwid yang benar, serta hafalan juz amma.
+                    </p>
+                    <ul class="list-unstyled feature-list mb-4">
+                        <li><i class="fas fa-check-circle"></i> Metode Tilawati / Iqra</li>
+                        <li><i class="fas fa-check-circle"></i> Target Khatam Al-Qur'an</li>
+                        <li><i class="fas fa-check-circle"></i> Praktik Wudhu & Sholat</li>
+                        <li><i class="fas fa-check-circle"></i> Kisah Nabi & Rasul</li>
+                    </ul>
+                    <a href="https://wa.me/62895639068080?text=Assalamu%27alaikum%2C%20saya%20tertarik%20mendaftar%20TPQ%20Syamsul%20Huda" target="_blank" class="btn btn-outline-success rounded-pill px-4">Daftar TPQ Sekarang <i class="fab fa-whatsapp ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="edu-section" style="background-color: #f9fbf9;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="edu-img-wrapper">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6w5N7u2s11OQhHrLh_1dVs9PH2eUeNpgP7HWXyoZFAr3zVni0vd96XFVxXcUCHYBW7jqNklV5thzmm9nj_Xgu8pkWY_QtbSGSOAfpvukbIaj9pw9Orx90-ik_jPY7To0SN3u7bKH9RAoxmrHwnf3zEgSTHdSjywNcsT3B8wzG5a9bfNysDHB8qQ0zgrc/s960/snapedit_1764261845578.jpeg" alt="Kegiatan Madin" class="edu-img">
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <span class="edu-badge">USIA 10+ TAHUN / REMAJA</span>
+                    <h2 class="fw-bold mb-3">Madrasah Diniyah (MADIN)</h2>
+                    <p class="text-muted mb-4">
+                        Memperdalam ilmu agama Islam (Tafaqquh Fiddin) dengan kurikulum pesantren dasar. Cocok bagi anak usia SD-SMP yang ingin memahami dasar-dasar hukum Islam, akidah, dan bahasa Arab.
+                    </p>
+                    <ul class="list-unstyled feature-list mb-4">
+                        <li><i class="fas fa-check-circle"></i> Fiqih (Ibadah & Muamalah Dasar)</li>
+                        <li><i class="fas fa-check-circle"></i> Aqidah Akhlak</li>
+                        <li><i class="fas fa-check-circle"></i> Bahasa Arab Dasar & Nahwu Shorof</li>
+                        <li><i class="fas fa-check-circle"></i> Sejarah Kebudayaan Islam (SKI)</li>
+                    </ul>
+                    <a href="https://wa.me/62895639068080?text=Assalamu%27alaikum%2C%20saya%20tertarik%20mendaftar%20Madrasah%20Diniyah" target="_blank" class="btn btn-outline-success rounded-pill px-4">Daftar Madin Sekarang <i class="fab fa-whatsapp ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="edu-section bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0 order-lg-2">
+                    <div class="edu-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kegiatan Tahfidz" class="edu-img">
+                    </div>
+                </div>
+                <div class="col-lg-6 pe-lg-5 order-lg-1">
+                    <span class="edu-badge">REMAJA & DEWASA</span>
+                    <h2 class="fw-bold mb-3">Tahfidz & Seni Baca Al-Qur'an</h2>
+                    <p class="text-muted mb-4">
+                        Program khusus bagi jamaah yang ingin menghafal Al-Qur'an (Juz 30 atau pilihan) dan memperbaiki keindahan bacaan (Tilawah/Mujawwad).
+                    </p>
+                    <ul class="list-unstyled feature-list mb-4">
+                        <li><i class="fas fa-check-circle"></i> Setoran Hafalan (Talaqqi)</li>
+                        <li><i class="fas fa-check-circle"></i> Bimbingan Makharijul Huruf & Tajwid</li>
+                        <li><i class="fas fa-check-circle"></i> Seni Irama (Nagham) Al-Qur'an</li>
+                        <li><i class="fas fa-check-circle"></i> Ujian & Sertifikasi Lokal</li>
+                    </ul>
+                    <a href="https://wa.me/62895639068080?text=Assalamu%27alaikum%2C%20saya%20tertarik%20program%20Tahfidz%20%26%20Tilawah" target="_blank" class="btn btn-outline-success rounded-pill px-4">Daftar Tahfidz Sekarang <i class="fab fa-whatsapp ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="edu-section" style="background-color: #f9fbf9;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="edu-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kajian Dewasa" class="edu-img">
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <span class="edu-badge">DEWASA / ORANG TUA</span>
+                    <h2 class="fw-bold mb-3">Majelis Ta'lim & Dirosah Islamiyah</h2>
+                    <p class="text-muted mb-4">
+                        Pendidikan sepanjang hayat (*Long Life Learning*) bagi jamaah dewasa untuk mendalami ilmu agama sebagai bekal kehidupan sehari-hari dan mendidik keluarga.
+                    </p>
+                    <ul class="list-unstyled feature-list mb-4">
+                        <li><i class="fas fa-check-circle"></i> Kajian Fiqih Muamalah & Keluarga</li>
+                        <li><i class="fas fa-check-circle"></i> Tadabbur & Tafsir Al-Qur'an</li>
+                        <li><i class="fas fa-check-circle"></i> Parenting Islami (Tarbiyatul Aulad)</li>
+                        <li><i class="fas fa-check-circle"></i> Pengurusan Jenazah (Dauroh Janaiz)</li>
+                    </ul>
+                    <a href="https://wa.me/62895639068080?text=Assalamu%27alaikum%2C%20saya%20ingin%20info%20jadwal%20Majelis%20Ta%27lim" target="_blank" class="btn btn-outline-success rounded-pill px-4">Info Jadwal Kajian <i class="fab fa-whatsapp ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ppdb-section">
+        <div class="container">
+            <div class="ppdb-card">
+                <i class="fas fa-user-graduate fa-3x text-warning mb-3"></i>
+                <h2 class="fw-bold mb-3" style="font-family: 'Playfair Display', serif;">Penerimaan Peserta Didik Baru (PPDB)</h2>
+                <p class="text-muted mb-4 lead">
+                    Mari bergabung menjadi keluarga besar Lembaga Pendidikan Masjid Syamsul Huda. 
+                    Pendaftaran dibuka setiap hari kerja atau melalui daring via WhatsApp.
+                </p>
+                <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                    <a href="https://wa.me/62895639068080?text=Halo%20Admin%2C%20saya%20ingin%20mendaftar%20PPDB" target="_blank" class="btn btn-success btn-lg rounded-pill fw-bold px-5">
+                        <i class="fab fa-whatsapp me-2"></i> Hubungi Panitia PPDB
+                    </a>
+                    <a href="#" class="btn btn-outline-dark btn-lg rounded-pill fw-bold px-5">
+                        <i class="fas fa-file-download me-2"></i> Download Brosur
+                    </a>
+                </div>
+                <p class="mt-4 small text-muted">Lokasi: Kantor Sekretariat Masjid, Jl. Simpang Borobudur No. 123, Malang.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold text-white"><i class="fas fa-mosque me-2"></i> Masjid Syamsul Huda</h5>
+                    <p class="mt-3 text-white-50 small">
+                        Jl. Simpang Candi Panggung No. 23<br>
+                        Mojolangu, Lowokwaru, Kota Malang, Jawa Timur<br>
+                        Kode Pos 65141
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="me-3 fs-5"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="fs-5"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4 col-6">
+                    <h5>Navigasi</h5>
+                    <ul class="list-unstyled mt-3 small">
+                        <li class="mb-2"><a href="index.html">Beranda</a></li>
+                        <li class="mb-2"><a href="profil-masjid.html">Profil Masjid</a></li>
+                        <li class="mb-2"><a href="galeri.html">Galeri</a></li>
+                        <li class="mb-2"><a href="laporan.html">Laporan Keuangan</a></li>
+                        <li class="mb-2"><a href="blog">Artikel & Berita</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4 col-6">
+                    <h5>Layanan</h5>
+                    <ul class="list-unstyled mt-3 small">
+                        <li class="mb-2"><a href="#">Konsultasi Syariah</a></li>
+                        <li class="mb-2"><a href="program.html">Program DKM</a></li>
+                        <li class="mb-2"><a href="pendidikan.html">Pendidikan</a></li>
+                        <li class="mb-2"><a href="event.html">Event PHBI</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Lokasi Kami</h5>
+                    <div class="mt-3">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1011547.1639865536!2d112.01189142325426!3d-7.962101287934152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78820a2160b241%3A0x1f1cb525869e9a24!2s%22YAYASAN%20MASJID%20SAMSUL%20HUDA%22!5e0!3m2!1sid!2sid!4v1767131227588!5m2!1sid!2sid" 
+                                class="footer-map" allowfullscreen="" loading="lazy"></iframe>
+                        <a href="https://maps.app.goo.gl/7hdpxZ9sThkx45sNA" target="_blank" class="text-white-50 small mt-2 d-block text-decoration-none">
+                            <i class="fas fa-map-marked-alt me-1"></i> Buka di Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center text-white-50">
+            <div class="container">
+                <small>© 2024 Masjid Syamsul Huda Malang. All Rights Reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-container">
+        <button class="btn-float top-float" id="btnBackToTop" title="Kembali ke Atas">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <a href="https://wa.me/62895639068080?text=Assalamu%27alaikum%20Admin%2C%20saya%20ingin%20bertanya%20tentang%20Lembaga%20Pendidikan%20Masjid" target="_blank" class="btn-float wa-float" title="Chat Takmir">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Scroll to Top Logic
+        const btnBackToTop = document.getElementById("btnBackToTop");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btnBackToTop.classList.add("show");
+            } else {
+                btnBackToTop.classList.remove("show");
+            }
+        };
+
+        btnBackToTop.addEventListener("click", function(){
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
+</body>
+</html>
