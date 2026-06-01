@@ -1,1 +1,977 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator Prompt Souvenir & Corporate Gift | by LSA Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0d1b3e;
+  --navy-mid: #1a2f5e;
+  --navy-soft: #243c78;
+  --gold: #c9a227;
+  --gold-light: #e8c547;
+  --gold-pale: #fdf6e0;
+  --white: #ffffff;
+  --offwhite: #f8f7f4;
+  --gray100: #f1f0ed;
+  --gray200: #e2e0da;
+  --gray500: #7d7b74;
+  --gray700: #3d3c38;
+  --output-bg: #060d1f;
+  --output-text: #e8d99a;
+  --radius: 16px;
+  --shadow: 0 8px 30px rgba(13,27,62,0.10);
+  --shadow-hover: 0 16px 40px rgba(13,27,62,0.16);
+}
 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: linear-gradient(160deg, #eef1f8 0%, #f8f7f4 55%, #f2ede3 100%);
+  color: var(--gray700);
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, #1c3a6e 100%);
+  color: white;
+  padding: 52px 24px 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -70px; right: -70px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(201,162,39,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -90px; left: -50px;
+  width: 260px; height: 260px;
+  background: radial-gradient(circle, rgba(201,162,39,0.11) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.header-inner { position: relative; z-index: 1; }
+
+.header-tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,162,39,0.16);
+  border: 1px solid rgba(201,162,39,0.38);
+  color: var(--gold-light);
+  padding: 6px 18px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  color: white;
+}
+.header h1 span { color: var(--gold-light); }
+.header p {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 15px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.75;
+}
+.header-stats {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.stat-divider {
+  width: 1px;
+  height: 44px;
+  background: rgba(255,255,255,0.15);
+  align-self: center;
+}
+.stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-top: 5px;
+}
+
+/* ── CONTAINER ── */
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+  align-items: start;
+}
+
+/* ── CARDS ── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.3s;
+  border: 1px solid rgba(13,27,62,0.06);
+}
+.card:hover { box-shadow: var(--shadow-hover); }
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gold-pale);
+  color: #7a5f10;
+  border: 1px solid rgba(201,162,39,0.32);
+  padding: 5px 14px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  color: var(--navy);
+  margin-bottom: 22px;
+  line-height: 1.3;
+}
+.card h2 .sub {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--gray500);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+/* ── SECTION TITLES ── */
+.sec-title {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: var(--gray500);
+  margin-top: 26px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sec-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gray200);
+}
+
+/* ── FORM ELEMENTS ── */
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-top: 16px;
+  margin-bottom: 5px;
+  letter-spacing: 0.2px;
+}
+label:first-of-type { margin-top: 0; }
+
+input, select, textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--gray200);
+  border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  color: var(--gray700);
+  background: var(--offwhite);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  outline: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,162,39,0.13);
+  background: white;
+}
+textarea { min-height: 68px; resize: vertical; line-height: 1.55; }
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='8' viewBox='0 0 13 8'%3E%3Cpath d='M1 1l5.5 5.5L12 1' stroke='%230d1b3e' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 13px center;
+  padding-right: 38px;
+  cursor: pointer;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.grid2 > div label,
+.grid3 > div label { margin-top: 0; }
+
+/* ── SIZE PRESETS ── */
+.preset-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 9px;
+}
+.preset-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.size-btn {
+  background: var(--offwhite);
+  border: 1.5px solid var(--gray200);
+  color: var(--navy-mid);
+  padding: 4px 11px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  line-height: 1.6;
+}
+.size-btn:hover {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+  color: #7a5f10;
+}
+
+/* ── CHECKBOXES ── */
+.checks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin-top: 8px;
+}
+.checks-grid label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  margin-top: 0;
+  background: var(--offwhite);
+  padding: 9px 12px;
+  border-radius: 9px;
+  border: 1.5px solid var(--gray200);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.checks-grid label:hover {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+}
+.checks-grid input[type="checkbox"] {
+  width: 15px; height: 15px;
+  padding: 0; margin: 0;
+  accent-color: var(--gold);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ── NOTE BOX ── */
+.note-box {
+  background: var(--gold-pale);
+  border-left: 4px solid var(--gold);
+  padding: 12px 16px;
+  border-radius: 0 10px 10px 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #6b5010;
+  margin-top: 22px;
+}
+
+/* ── BUTTONS ── */
+.btn-generate {
+  width: 100%;
+  margin-top: 22px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+  transition: all 0.22s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-generate::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(201,162,39,0.22), transparent);
+  transition: left 0.45s ease;
+}
+.btn-generate:hover::before { left: 100%; }
+.btn-generate:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(13,27,62,0.32); }
+.btn-generate:active { transform: translateY(0); }
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+.btn-copy {
+  flex: 1;
+  padding: 12px 16px;
+  background: var(--gold);
+  color: var(--navy);
+  border: none;
+  border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-copy:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-clear {
+  padding: 12px 16px;
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1.5px solid #fecaca;
+  border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-clear:hover { background: #fee2e2; }
+
+/* ── OUTPUT ── */
+.output-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.prompt-count {
+  background: rgba(201,162,39,0.18);
+  color: var(--gold-light);
+  border: 1px solid rgba(201,162,39,0.25);
+  padding: 4px 11px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 4px;
+  display: none;
+}
+.output {
+  white-space: pre-wrap;
+  background: var(--output-bg);
+  color: var(--output-text);
+  padding: 20px;
+  border-radius: 13px;
+  min-height: 540px;
+  max-height: 860px;
+  overflow-y: auto;
+  line-height: 1.72;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  border: 1px solid rgba(201,162,39,0.13);
+}
+.output::-webkit-scrollbar { width: 5px; }
+.output::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
+.output::-webkit-scrollbar-thumb { background: rgba(201,162,39,0.28); border-radius: 3px; }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--navy);
+  color: white;
+  padding: 13px 26px;
+  border-radius: 99px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgba(201,162,39,0.4);
+  transition: transform 0.36s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 999;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 920px) {
+  .container { grid-template-columns: 1fr; }
+  .grid2 { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .header h1 { font-size: 22px; }
+  .header-stats { gap: 18px; }
+  .stat-divider { display: none; }
+  .checks-grid { grid-template-columns: 1fr; }
+  .card { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-tagline">✦ AI Prompt Studio ✦</div>
+    <h1>Generator Prompt<br><span>Souvenir & Corporate Gift</span></h1>
+    <p>Isi form produk Anda — sistem akan membuat 14 prompt foto & visual siap pakai untuk Midjourney, DALL-E, Stable Diffusion, dan AI image generator lainnya.</p>
+    <div class="header-stats">
+      <div class="stat-item">
+        <div class="stat-num">14</div>
+        <div class="stat-label">Prompt Per Generate</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Jenis Produk</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">10</div>
+        <div class="stat-label">Teknik Branding</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Ukuran Tersedia</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MAIN LAYOUT ═══════════ -->
+<div class="container">
+
+  <!-- ──── FORM CARD ──── -->
+  <div class="card">
+    <div class="card-badge">⬡ Form Generator</div>
+    <h2>Data Produk & Branding
+      <span class="sub">Pilih jenis produk untuk isian otomatis, lalu sesuaikan</span>
+    </h2>
+
+    <!-- JENIS PRODUK -->
+    <label>Jenis Produk</label>
+    <select id="jenisProduk" onchange="isiDefault()">
+      <option value="souvenir_kantor">Souvenir Kantor (Tumbler, Pulpen, USB, Notebook, dll)</option>
+      <option value="tumbler">Tumbler / Botol Minum Custom</option>
+      <option value="seminar_kit">Seminar Kit & Tas Seminar</option>
+      <option value="corporate_gift">Corporate Gift Premium</option>
+      <option value="hampers">Hampers & Parcel (Lebaran, Natal, dll)</option>
+      <option value="merchandise">Merchandise & Apparel (Kaos, Topi, Totebag)</option>
+      <option value="plakat">Plakat / Trophy / Award Custom</option>
+    </select>
+
+    <!-- UKURAN & KUANTITAS -->
+    <div class="sec-title">Ukuran & Kuantitas</div>
+    <div class="grid2">
+      <div>
+        <label>Dimensi Produk</label>
+        <input id="ukuranProduk" value="">
+      </div>
+      <div>
+        <label>Jumlah Pesanan</label>
+        <select id="jumlahPesanan">
+          <option>25 pcs</option>
+          <option>50 pcs</option>
+          <option>100 pcs</option>
+          <option selected>250 pcs</option>
+          <option>500 pcs</option>
+          <option>1000 pcs</option>
+          <option>2000 pcs</option>
+          <option>5000 pcs</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- PRESET UKURAN (dinamis per kategori) -->
+    <div class="preset-row" id="presetRow">
+      <span class="preset-label">Preset:</span>
+    </div>
+
+    <!-- BRAND & EVENT -->
+    <div class="sec-title">Informasi Brand & Event</div>
+    <div class="grid2">
+      <div>
+        <label>Nama Brand / Perusahaan</label>
+        <input id="namaBrand" placeholder="cth: PT. Maju Sejahtera">
+      </div>
+      <div>
+        <label>Event / Momen</label>
+        <input id="namaEvent" placeholder="cth: HUT ke-25, Lebaran 2025">
+      </div>
+    </div>
+
+    <!-- DESAIN PRODUK -->
+    <div class="sec-title">Material & Warna</div>
+
+    <label>Warna Dominan Produk</label>
+    <textarea id="warna"></textarea>
+
+    <label>Material / Bahan Utama</label>
+    <textarea id="material"></textarea>
+
+    <!-- BRANDING DETAIL -->
+    <div class="sec-title">Detail Branding</div>
+
+    <label>Posisi & Ukuran Area Branding / Logo</label>
+    <textarea id="posisiBranding"></textarea>
+
+    <label>Target Penerima / Pengguna</label>
+    <textarea id="targetPenerima"></textarea>
+
+    <label>Nuansa / Kesan yang Diinginkan</label>
+    <textarea id="nuansa"></textarea>
+
+    <!-- TEKNIK BRANDING -->
+    <div class="sec-title">Teknik Branding</div>
+    <div class="checks-grid">
+      <label><input type="checkbox" value="laser engraving"> Laser Engraving</label>
+      <label><input type="checkbox" value="sablon 1 warna"> Sablon 1 Warna</label>
+      <label><input type="checkbox" value="sablon full color"> Sablon Full Color</label>
+      <label><input type="checkbox" value="sablon DTF"> Sablon DTF</label>
+      <label><input type="checkbox" value="bordir komputer"> Bordir Komputer</label>
+      <label><input type="checkbox" value="hot stamp gold"> Hot Stamp Gold</label>
+      <label><input type="checkbox" value="UV printing"> UV Printing</label>
+      <label><input type="checkbox" value="sublimasi"> Sublimasi</label>
+      <label><input type="checkbox" value="emboss deboss"> Emboss / Deboss</label>
+      <label><input type="checkbox" value="cetak digital"> Cetak Digital</label>
+    </div>
+
+    <!-- STYLE VISUAL -->
+    <div class="sec-title">Gaya Visual / Style Foto</div>
+    <select id="styleVisual">
+      <option>commercial product photography, ultra high detail, studio lighting, premium brand feel, sharp focus, photorealistic</option>
+      <option>editorial product photography, lifestyle and mood, natural light, warm tones, premium Indonesian corporate brand</option>
+      <option>luxury brand photography, cinematic lighting, elegant composition, dark moody background with gold accents</option>
+      <option>clean minimal product photography, flat lay style, modern aesthetic, neutral pastel tones, Instagram ready aesthetic</option>
+      <option>e-commerce product photography, bright even lighting, multiple angles, white background, catalog ready</option>
+    </select>
+
+    <div class="note-box">
+      💡 <strong>Tips:</strong> Pilih jenis produk untuk isian otomatis. Isi Nama Brand dan Event agar prompt lebih spesifik. Centang teknik branding yang digunakan. Klik <strong>Generate</strong> untuk 14 prompt siap pakai.
+    </div>
+
+    <button class="btn-generate" onclick="generatePrompt()">
+      ⚡ &nbsp;GENERATE 14 PROMPT VISUAL
+    </button>
+  </div>
+
+  <!-- ──── OUTPUT CARD ──── -->
+  <div class="card">
+    <div class="card-badge">✦ Output Prompt</div>
+    <div class="output-header">
+      <h2 style="margin-bottom:0">Hasil Prompt Siap Pakai
+        <span class="sub">Paste ke Midjourney / DALL·E / SD / Ideogram / dll</span>
+      </h2>
+      <span class="prompt-count" id="promptCount">14 Prompts</span>
+    </div>
+
+    <div id="output" class="output">Prompt visual akan muncul di sini setelah klik Generate...
+
+14 prompt yang akan dibuat:
+
+  1.  Foto produk background putih (katalog/e-commerce)
+  2.  Foto produk lifestyle (meja kerja/konteks)
+  3.  Flat lay / bird's eye view
+  4.  Close-up detail branding & logo
+  5.  Detail material & tekstur produk
+  6.  Foto kemasan / packaging / unboxing
+  7.  Foto konteks penggunaan (lifestyle orang)
+  8.  Foto group / bundle set produk
+  9.  Hampers / parcel arrangement
+  10. Social media square 1:1 (Instagram feed)
+  11. Social media portrait 4:5 (Instagram/Facebook)
+  12. Mockup halaman katalog produk
+  13. Display booth / stand pameran
+  14. Paket konsistensi visual branding</div>
+
+    <div class="btn-row">
+      <button class="btn-copy" onclick="copyPrompt()">📋 &nbsp;Copy Semua Prompt</button>
+      <button class="btn-clear" onclick="clearOutput()">✕ &nbsp;Hapus</button>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════ SCRIPT ═══════════ -->
+<script>
+
+/* ── DEFAULT DATA PER KATEGORI ── */
+const dataDefault = {
+  souvenir_kantor: {
+    ukuran: "medium (15 × 10 × 5 cm)",
+    warna: "navy blue, gold accent, putih bersih, abu premium",
+    material: "stainless steel premium, plastik ABS food grade, rubber grip soft touch",
+    posisiBranding: "badan depan produk, area 6 × 4 cm, laser engraving atau sablon, logo + nama perusahaan",
+    targetPenerima: "karyawan perusahaan, tamu undangan VIP, relasi bisnis korporat",
+    nuansa: "profesional, elegan, berkelas, berkesan, mencerminkan identitas korporat",
+    teknik: ["laser engraving", "sablon full color"]
+  },
+  tumbler: {
+    ukuran: "500ml — tinggi 22 cm, diameter 7 cm",
+    warna: "silver stainless brushed, hitam matte, navy blue metallic",
+    material: "stainless steel 304 food grade, double wall vacuum insulated, lid silicone seal",
+    posisiBranding: "badan tumbler depan tengah, area 8 × 5 cm, laser engraving presisi",
+    targetPenerima: "karyawan perusahaan, peserta event korporat, hadiah pelanggan setia, undangan seminar",
+    nuansa: "modern, sleek, premium, fungsional, everyday use, kesan berkualitas tinggi",
+    teknik: ["laser engraving", "sablon full color"]
+  },
+  seminar_kit: {
+    ukuran: "tas A4 standar — 35 × 28 × 8 cm, isi lengkap ATK",
+    warna: "biru navy, putih bersih, aksen kuning emas, detail abu silver",
+    material: "canvas premium 600D atau non-woven, buku hard cover ivory, pulpen metal, sticky notes, map plastic",
+    posisiBranding: "depan tas tengah bordir atau sablon, cover buku cetak, klip pulpen engraving, sekat tas",
+    targetPenerima: "peserta seminar, workshop, training nasional, conference korporat, peserta diklat",
+    nuansa: "profesional, modern, organized, inspiratif, brand ambassador, memberi kesan kredibel",
+    teknik: ["bordir komputer", "sablon full color", "cetak digital"]
+  },
+  corporate_gift: {
+    ukuran: "gift box medium — 25 × 20 × 12 cm, set multi-item premium",
+    warna: "gold premium, putih ivory cream, hitam elegant, ribbon satin berkilau",
+    material: "rigid box linen texture premium, ribbon satin double-faced, tissue paper branded, kartu ucapan art paper",
+    posisiBranding: "tutup box hot stamp gold, tag ucapan custom eksklusif, ribbon berlogo perusahaan, seal stiker branded",
+    targetPenerima: "mitra bisnis VIP, client utama perusahaan, direksi, rekanan strategis, tamu VVIP",
+    nuansa: "mewah, eksklusif, berkesan mendalam, prestisius, luxury gift experience, apresiasi setulus hati",
+    teknik: ["hot stamp gold", "cetak digital", "emboss deboss"]
+  },
+  hampers: {
+    ukuran: "box hampers large — 40 × 30 × 20 cm, isi produk pilihan",
+    warna: "merah elegan, gold metallic, kraft natural coklat, ivory premium",
+    material: "rigid box custom print, produk branded pilihan, ribbon pita mewah, shredded paper filler, kartu ucapan premium",
+    posisiBranding: "tutup box full color custom, label brand premium depan, kartu ucapan branded, seal stiker logo",
+    targetPenerima: "klien korporat, karyawan hari raya Lebaran/Natal, undangan pernikahan, mitra bisnis istimewa",
+    nuansa: "hangat, meriah, berkesan, premium, thoughtful dan penuh perhatian, merayakan bersama",
+    teknik: ["cetak digital", "hot stamp gold", "emboss deboss"]
+  },
+  merchandise: {
+    ukuran: "kaos S–XXL / topi free size / totebag 35 × 40 cm",
+    warna: "putih bersih, hitam solid, abu medium, navy blue (sesuai brand guideline)",
+    material: "cotton combed 30s premium, canvas 16 oz, polyester spandex, bahan berkualitas pilihan",
+    posisiBranding: "dada kiri kecil logo, punggung full desain besar, lengan bawah tagline, kerah bagian dalam label care",
+    targetPenerima: "karyawan perusahaan, tim event organizer, komunitas brand, ambassador merek, peserta gathering",
+    nuansa: "casual, trendy, team identity, brand ambassador, wearable art, bangga mengenakan",
+    teknik: ["sablon DTF", "sablon full color", "bordir komputer"]
+  },
+  plakat: {
+    ukuran: "standar — 30 × 25 × 3 cm (base 15 × 10 cm)",
+    warna: "gold premium, silver brushed, hitam piano finish, akrilik bening crystal",
+    material: "akrilik premium UV stabilized, logam kuningan finishing emas, base kayu mahoni, inlay logam",
+    posisiBranding: "permukaan depan full engraving, logo + nama penerima + teks penghargaan, cetak UV detail",
+    targetPenerima: "penerima penghargaan korporat, narasumber seminar, mitra berprestasi, karyawan terbaik",
+    nuansa: "prestigious, berkesan abadi, penghargaan tinggi, elegan formal, kenangan berharga",
+    teknik: ["laser engraving", "UV printing", "emboss deboss"]
+  }
+};
+
+/* ── PRESET UKURAN PER KATEGORI ── */
+const sizePresets = {
+  souvenir_kantor: [
+    {label:"Mini", value:"mini (8 × 5 × 3 cm)"},
+    {label:"Kecil", value:"kecil (12 × 8 × 4 cm)"},
+    {label:"Medium", value:"medium (15 × 10 × 5 cm)"},
+    {label:"Besar", value:"besar (20 × 14 × 7 cm)"},
+  ],
+  tumbler: [
+    {label:"250ml", value:"250ml — tinggi 18 cm, ⌀6 cm"},
+    {label:"350ml", value:"350ml — tinggi 20 cm, ⌀6.5 cm"},
+    {label:"500ml", value:"500ml — tinggi 22 cm, ⌀7 cm"},
+    {label:"600ml", value:"600ml — tinggi 24 cm, ⌀7.5 cm"},
+    {label:"750ml", value:"750ml — tinggi 26 cm, ⌀8 cm"},
+    {label:"1 Liter", value:"1000ml — tinggi 30 cm, ⌀9 cm"},
+  ],
+  seminar_kit: [
+    {label:"Eco/Mini", value:"tas A5 mini (30×22×5 cm) isi dasar"},
+    {label:"Standard A4", value:"tas A4 (35×28×8 cm) isi lengkap"},
+    {label:"Premium A4+", value:"tas A4 plus (38×30×10 cm) ekstra"},
+    {label:"Ransel Premium", value:"ransel seminar (42×32×14 cm) premium"},
+  ],
+  corporate_gift: [
+    {label:"Small Box", value:"gift box small (18×14×8 cm)"},
+    {label:"Medium Box", value:"gift box medium (25×20×12 cm)"},
+    {label:"Large Box", value:"gift box large (35×28×16 cm)"},
+    {label:"Premium Set", value:"premium gift set (40×32×20 cm) multi-item"},
+  ],
+  hampers: [
+    {label:"Small", value:"hampers small (30×25×15 cm)"},
+    {label:"Medium", value:"hampers medium (35×28×18 cm)"},
+    {label:"Large", value:"hampers large (40×30×22 cm)"},
+    {label:"Jumbo", value:"hampers jumbo (50×40×28 cm) premium"},
+  ],
+  merchandise: [
+    {label:"Kaos S", value:"kaos S (chest 50 cm, panjang 68 cm)"},
+    {label:"Kaos M", value:"kaos M (chest 54 cm, panjang 70 cm)"},
+    {label:"Kaos L", value:"kaos L (chest 58 cm, panjang 72 cm)"},
+    {label:"Kaos XL", value:"kaos XL (chest 62 cm, panjang 74 cm)"},
+    {label:"Kaos XXL", value:"kaos XXL (chest 66 cm, panjang 76 cm)"},
+    {label:"Totebag", value:"totebag (35×40 cm, tali 60 cm)"},
+    {label:"Topi", value:"topi baseball (56–60 cm, adjustable)"},
+  ],
+  plakat: [
+    {label:"Kecil", value:"kecil (22×18×2.5 cm, base 12×8 cm)"},
+    {label:"Standar", value:"standar (30×25×3 cm, base 15×10 cm)"},
+    {label:"Besar", value:"besar (38×30×4 cm, base 18×12 cm)"},
+    {label:"Jumbo", value:"jumbo (50×40×5 cm, base 22×15 cm)"},
+  ]
+};
+
+/* ── FUNGSI ISI DEFAULT ── */
+function isiDefault() {
+  const jenis = document.getElementById("jenisProduk").value;
+  const d = dataDefault[jenis];
+
+  document.getElementById("ukuranProduk").value = d.ukuran;
+  document.getElementById("warna").value = d.warna;
+  document.getElementById("material").value = d.material;
+  document.getElementById("posisiBranding").value = d.posisiBranding;
+  document.getElementById("targetPenerima").value = d.targetPenerima;
+  document.getElementById("nuansa").value = d.nuansa;
+
+  // Reset semua checkbox
+  document.querySelectorAll('.checks-grid input[type="checkbox"]').forEach(cb => {
+    cb.checked = d.teknik.includes(cb.value);
+  });
+
+  // Update preset ukuran
+  updateSizePresets(jenis);
+}
+
+function updateSizePresets(jenis) {
+  const presets = sizePresets[jenis] || [];
+  const row = document.getElementById("presetRow");
+  // Simpan span label
+  row.innerHTML = '<span class="preset-label">Preset Ukuran:</span>';
+  presets.forEach(p => {
+    const btn = document.createElement("button");
+    btn.className = "size-btn";
+    btn.textContent = p.label;
+    btn.type = "button";
+    btn.onclick = () => {
+      document.getElementById("ukuranProduk").value = p.value;
+    };
+    row.appendChild(btn);
+  });
+}
+
+/* ── AMBIL TEKNIK BRANDING ── */
+function getTeknik() {
+  const checked = document.querySelectorAll('.checks-grid input[type="checkbox"]:checked');
+  const arr = Array.from(checked).map(c => c.value);
+  return arr.length ? arr.join(", ") : "teknik branding standar";
+}
+
+/* ── GENERATE PROMPT ── */
+function generatePrompt() {
+  const jenisOpt = document.getElementById("jenisProduk").selectedOptions[0];
+  const jenisText = jenisOpt.text.split(" (")[0]; // label bersih
+  const ukuran    = document.getElementById("ukuranProduk").value || "ukuran standar";
+  const jumlah    = document.getElementById("jumlahPesanan").value;
+  const namaBrand = document.getElementById("namaBrand").value.trim() || "brand perusahaan klien";
+  const namaEvent = document.getElementById("namaEvent").value.trim() || "corporate event";
+  const warna     = document.getElementById("warna").value;
+  const material  = document.getElementById("material").value;
+  const posisi    = document.getElementById("posisiBranding").value;
+  const target    = document.getElementById("targetPenerima").value;
+  const nuansa    = document.getElementById("nuansa").value;
+  const teknik    = getTeknik();
+  const style     = document.getElementById("styleVisual").value;
+
+  // Base descriptor yang dipakai semua prompt
+  const base = [
+    jenisText,
+    `ukuran ${ukuran}`,
+    `material ${material}`,
+    `warna ${warna}`,
+    `branding "${namaBrand}" untuk ${namaEvent}`,
+    `teknik: ${teknik}`,
+    `posisi logo: ${posisi}`,
+    `target: ${target}`,
+    `nuansa: ${nuansa}`
+  ].join(", ");
+
+  const prompts = [
+    {
+      judul: "PROMPT 1 — FOTO PRODUK SINGLE · BACKGROUND PUTIH",
+      detail: `product isolated on pure white background, centered composition, even soft box studio lighting, no hard shadows, sharp full-product focus, clean professional catalog photo, e-commerce listing ready, 4K resolution, ${style}.`
+    },
+    {
+      judul: "PROMPT 2 — FOTO PRODUK LIFESTYLE · KONTEKS MEJA KERJA",
+      detail: `product placed on modern minimalist office desk, lifestyle editorial context, natural window light from left side, shallow depth of field with bokeh background, coffee cup and stationery subtly visible, warm professional atmosphere, authentic Indonesian corporate context, ${style}.`
+    },
+    {
+      judul: "PROMPT 3 — FLAT LAY · BIRD'S EYE VIEW",
+      detail: `top-down overhead flat lay composition, product centered on clean neutral background (light gray or ivory), minimal styling props (branded envelope, business card, pen), soft diffused even lighting, symmetric artful layout, magazine editorial flat lay style, Instagram square format ready, ${style}.`
+    },
+    {
+      judul: "PROMPT 4 — CLOSE-UP DETAIL BRANDING & LOGO",
+      detail: `extreme close-up macro photography of branding area: ${posisi}, logo and lettering sharply in focus, ${teknik} technique texture clearly visible, material grain and premium surface finish detailed, professional product macro studio photography, ultra high clarity, brand identity hero shot, ${style}.`
+    },
+    {
+      judul: "PROMPT 5 — DETAIL MATERIAL & TEKSTUR",
+      detail: `macro texture photography highlighting ${material} quality, surface finish and material grain in extreme detail, premium craftsmanship visible, cross-section or angled shot showing construction and build quality, professional material detail commercial photography, ultra high resolution, ${style}.`
+    },
+    {
+      judul: "PROMPT 6 — FOTO KEMASAN & PACKAGING / UNBOXING",
+      detail: `premium packaging photography, gift box and wrapping featuring ${warna} color scheme, brand identity "${namaBrand}" on packaging, partial unboxing reveal showing product inside, ribbon and tissue paper elegantly arranged, luxury gift packaging feel, soft dramatic lighting, upscale corporate gift presentation, ${style}.`
+    },
+    {
+      judul: "PROMPT 7 — FOTO KONTEKS PENGGUNAAN · LIFESTYLE ORANG",
+      detail: `lifestyle photography featuring a professional Indonesian person using or holding the product, modern office or outdoor corporate environment, natural candid expression and posture, product clearly visible and central, branding "${namaBrand}" readable, warm authentic commercial lifestyle photography, real human moment, ${style}.`
+    },
+    {
+      judul: "PROMPT 8 — FOTO GROUP · BUNDLE SET PRODUK",
+      detail: `group product photography, multiple ${jenisText} units arranged as a premium set, 5–8 pieces in varied positions, same product multiple units showing quantity ${jumlah} concept, clean studio background, corporate gift set display, elegant arrangement showing brand consistency, three-quarter angle view, ${style}.`
+    },
+    {
+      judul: "PROMPT 9 — HAMPERS / PARCEL ARRANGEMENT",
+      detail: `luxury gift hampers arrangement photography, ${jenisText} products presented inside or alongside elegant premium gift packaging, ${warna} color palette, decorative elements (ribbon, shredded paper, dried flower accents), overhead top-down view composition, premium Indonesian corporate hampers styling, celebration and appreciation feeling, ${style}.`
+    },
+    {
+      judul: "PROMPT 10 — SOCIAL MEDIA SQUARE 1:1 · INSTAGRAM FEED",
+      detail: `square 1:1 format product hero shot, clean modern composition, ${warna} color palette dominant, product for "${namaBrand}" centered with clear subject, minimal negative space left for caption overlay, Instagram feed scroll-stopping aesthetic, bold and eye-catching visual impact, premium corporate brand post, ${style}.`
+    },
+    {
+      judul: "PROMPT 11 — SOCIAL MEDIA PORTRAIT 4:5 · INSTAGRAM / FACEBOOK",
+      detail: `portrait 4:5 vertical format product photography, product occupying lower two-thirds of frame, upper area clean negative space for headline text and branding "${namaBrand}", ${warna} background mood, brand identity clearly readable, modern corporate social media promotional post, clean and high-converting digital marketing visual, ${style}.`
+    },
+    {
+      judul: "PROMPT 12 — MOCKUP HALAMAN KATALOG PRODUK",
+      detail: `product catalog page design mockup, A4 print format, ${jenisText} product photography with clean background, product name and specification area layout, "${namaBrand}" corporate branding header, professional print catalog page design, corporate product brochure page, clean grid typographic layout, premium catalog design, ${style}.`
+    },
+    {
+      judul: "PROMPT 13 — DISPLAY BOOTH / STAND PAMERAN",
+      detail: `product display at corporate exhibition booth or product launch event, acrylic and metal counter display stand, ${jenisText} products arranged professionally, "${namaBrand}" branded backdrop banner visible, multiple products displayed at different heights, professional trade show or pameran setup, attractive product merchandising display, warm exhibition lighting, ${style}.`
+    },
+    {
+      judul: "PROMPT 14 — PAKET KONSISTENSI VISUAL BRANDING",
+      detail: `complete brand identity product set composition, cohesive visual showcase of ${jenisText} products all uniformly branded "${namaBrand}" for ${namaEvent}, same color palette ${warna}, consistent design language and material ${material} across all pieces, brand guideline photography, multiple product angles on clean neutral background, professional brand presentation collage style, ${style}.`
+    }
+  ];
+
+  const SEP = "\n─────────────────────────────────────────\n\n";
+
+  const hasil = prompts.map((p, i) => {
+    return `${p.judul}:\n${base}, ${p.detail}`;
+  }).join(SEP);
+
+  document.getElementById("output").innerText = hasil;
+  document.getElementById("promptCount").style.display = "inline-flex";
+  document.getElementById("promptCount").textContent = prompts.length + " Prompts";
+}
+
+/* ── COPY & CLEAR ── */
+function copyPrompt() {
+  const text = document.getElementById("output").innerText;
+  if (text.includes("Prompt visual akan muncul")) {
+    showToast("⚠ Klik Generate terlebih dahulu!");
+    return;
+  }
+  navigator.clipboard.writeText(text).then(() => {
+    showToast("✓  14 prompt berhasil dicopy!");
+  }).catch(() => {
+    // Fallback
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    showToast("✓  Prompt berhasil dicopy!");
+  });
+}
+
+function clearOutput() {
+  document.getElementById("output").innerText = `Prompt visual akan muncul di sini setelah klik Generate...
+
+14 prompt yang akan dibuat:
+
+  1.  Foto produk background putih (katalog/e-commerce)
+  2.  Foto produk lifestyle (meja kerja/konteks)
+  3.  Flat lay / bird's eye view
+  4.  Close-up detail branding & logo
+  5.  Detail material & tekstur produk
+  6.  Foto kemasan / packaging / unboxing
+  7.  Foto konteks penggunaan (lifestyle orang)
+  8.  Foto group / bundle set produk
+  9.  Hampers / parcel arrangement
+  10. Social media square 1:1 (Instagram feed)
+  11. Social media portrait 4:5 (Instagram/Facebook)
+  12. Mockup halaman katalog produk
+  13. Display booth / stand pameran
+  14. Paket konsistensi visual branding`;
+  document.getElementById("promptCount").style.display = "none";
+}
+
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 3000);
+}
+
+/* ── INIT ── */
+window.addEventListener("DOMContentLoaded", () => {
+  isiDefault(); // Isi form sesuai pilihan pertama
+});
+
+</script>
+</body>
+</html>
